@@ -1,8 +1,0 @@
-/Users/enryu/Projects/http_server/build/CMakeFiles/edit_cache.dir
-/Users/enryu/Projects/http_server/build/CMakeFiles/rebuild_cache.dir
-/Users/enryu/Projects/http_server/build/src/CMakeFiles/socket_util.dir
-/Users/enryu/Projects/http_server/build/src/CMakeFiles/edit_cache.dir
-/Users/enryu/Projects/http_server/build/src/CMakeFiles/rebuild_cache.dir
-/Users/enryu/Projects/http_server/build/apps/CMakeFiles/server.dir
-/Users/enryu/Projects/http_server/build/apps/CMakeFiles/edit_cache.dir
-/Users/enryu/Projects/http_server/build/apps/CMakeFiles/rebuild_cache.dir

@@ -1,9 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/Users/enryu/Projects/http_server/build/cmake_install.cmake",
-		"/Users/enryu/Projects/http_server/build/src/cmake_install.cmake",
-		"/Users/enryu/Projects/http_server/build/apps/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
