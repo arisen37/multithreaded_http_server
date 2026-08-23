@@ -5,11 +5,35 @@
 std::mutex cout_lock;
 
 void AcceptTCPConnection(int clientSocket){
-    char buffer[1024] = {0};
-    recv(clientSocket , buffer , sizeof(buffer) , 0);
+    char *buffer = (char *)(malloc(sizeof(char)*1024));
+    bool end_of_headers = false;
+    int pointer = 0;
+    while(!end_of_headers){
+        int byte_rec = recv(clientSocket , buffer + pointer, 1024 * sizeof(char) , 0);
+
+        // client closed connection or error occurred -> stop waiting for more data
+        if(byte_rec <= 0){
+            break;
+        }
+
+        for(int i = 0 ; i < pointer + byte_rec && i < pointer + 1024 - 4 ; i++){
+            if(buffer[i] == '\r' && buffer[i+1] == '\n' && buffer[i+2] == '\r' && buffer[i+3] == '\n'){
+                end_of_headers = true;
+            }
+        }
+
+        if(!end_of_headers){
+            char *temp = (char *)(realloc(buffer , (pointer + 1024)*sizeof(char)));
+            buffer = temp;
+            pointer += 1024;
+        }
+    }
+
     cout_lock.lock();
-    std::cout << "Message from " << clientSocket << " " << buffer << std::endl;
+    std::cout << buffer << std::endl;
     cout_lock.unlock();
+    free(buffer);
+    close(clientSocket);
 }
 
 int main(){
