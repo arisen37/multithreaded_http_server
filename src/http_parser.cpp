@@ -3,6 +3,11 @@
 
 //Utility for parsers 
 
+// HTTP-message   = start-line CRLF
+//                  *( field-line CRLF )
+//                  CRLF
+//                  [ message-body ]
+
 //METHOD UTLITY
 
 // 0 .. 9
@@ -122,6 +127,34 @@ bool is_absolute_form(){
 
 // HTTP-version  = HTTP-name "/" DIGIT "." DIGIT
 // HTTP-name     = %s"HTTP"
+
+bool is_http_version(){
+
+}
+
+// FIELD LINE UTILITY
+
+// field-line   = field-name ":" OWS field-value OWS
+// OWS  = *( SP / HTAB )
+// field-name = token
+// token  = 1*tchar
+// tchar  = "!" / "#" / "$" / "%" / "&" / "'" / "*"
+//           / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~"
+//           / DIGIT / ALPHA
+// field-value    = *field-content
+// field-content  = field-vchar
+//                    [ 1*( SP / HTAB / field-vchar ) field-vchar ]
+// field-vchar    = VCHAR / obs-text
+// obs-text       = %x80-FF
+
+bool is_field_line(){
+
+}
+
+// MESSAGE - BODY UTILITY
+
+// message-body = *OCTET
+// OCTET (any 8-bit sequence of data)
 
 int parser_method(std::string &input_string , std::string &method){
     bool parse_succesful = true;
